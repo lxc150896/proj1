@@ -1,0 +1,21 @@
+{
+  "name": "lxc",
+  "description": "shop",
+  "main": "shop.php",
+  "authors": [
+    "lxc150896"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "lxc150896"
+  ],
+  "homepage": "https://github.com/lxc150896",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {}
+}
