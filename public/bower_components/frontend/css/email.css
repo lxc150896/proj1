@@ -1,0 +1,23 @@
+table td{
+	padding: 15px 5px;
+}
+.info{
+	font-weight: bold
+}
+p.info{
+	margin-top: 20px;
+}
+.title h3{
+	color: #FF9600;
+}
+.total {
+	column-span: 3;
+	text-align: right;
+}
+table {
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid black;
+}

@@ -1,0 +1,44 @@
+.ten{
+    width: 30%;
+}
+.anh{
+    width: 20%;
+}
+.img {
+    width: 200px;
+    height: 200px;
+}
+.cate_cach{
+    width: 200px;
+}
+.thumbnail{
+    width: 300px;
+    height: 300px;
+}
+.option{
+    width: 150px;
+}
+.table-bordered{
+    margin-top: 20px;
+}
+.thearch{
+    margin-top: 20px;
+}
+.row{
+    margin-bottom: 40px;
+    margin-top: 10px;
+}
+.page-header{
+    margin-bottom: 5px;
+}
+.thongbao{
+    margin-right: 40%;
+    float: right;
+    height: 25px;
+}
+.alert-success{
+    height: 40px !important;
+}
+.colo{
+    color: #3300FF;
+}
