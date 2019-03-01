@@ -19,8 +19,8 @@ class FrontendController extends Controller
 
     public function getHome()
     {
-        $data['featured'] = Product::where('featured', config('constant.one'))->orderBy('id', 'desc')->take(config('constant.eight'))->get();
-        $data['new_product'] = Product::orderBy('id', 'desc')->take(config('constant.sixteen'))->get();
+        $data['featured'] = Product::where('featured', config('constant.one'))->orderBy('id', 'desc')->paginate(1);
+        $data['new_product'] = Product::orderBy('id', 'desc')->paginate(1);
 
         return view('frontend.home', $data);
     }
@@ -42,7 +42,7 @@ class FrontendController extends Controller
     {
         $data['categoryName'] = Category::findOrFail($id);
         $data['items'] = Product::where('category_id', $id)->orderBy('category_id', 'desc')->paginate(config('constant.eight'));
-
+        // dd($data);
         return view('frontend.category', $data);
     }
 

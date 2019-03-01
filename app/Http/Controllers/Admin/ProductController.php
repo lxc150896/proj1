@@ -96,9 +96,11 @@ class ProductController extends Controller
         $arr['memory_stick'] = $request->stick;
         $arr['sim'] = $request->sim;
         $arr['battery_capacity'] = $request->battery;
+        // dd($request->img);
         if ($request->hasFile('img')) {
             $img = $request->img->getClientOriginalName();
             $arr['img'] = $img;
+            dd($img);
             $request->img->move(config('constant.avatar'), $img);
         }
         $product::where('id', $id)->update($arr);

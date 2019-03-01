@@ -61,7 +61,7 @@ class UserController extends Controller
         $loyalCustomer = $this->postCustomer->getLoyalCustomer($request);
         $id = $loyalCustomer->id;
         $this->postRepository->getPostHost($request, $id);
-        $request->session()->flash('login', trans('frontend.messageLogin'));
+        $request->session()->flash('login', trans('frontend.messageLogin'), ['mau' => 'info']);
         
         return redirect('user');
     }

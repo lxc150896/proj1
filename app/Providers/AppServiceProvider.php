@@ -17,10 +17,10 @@ class AppServiceProvider extends ServiceProvider
     {
         
         Schema::defaultStringLength(191);
-        $data['categories'] = Category::all()->take(config('constant.six'));
-        $all = count(Category::all());
-        $data['category'] = Category::skip(config('constant.six'))->take($all - config('constant.three'))->get();
-        view()->share($data);
+        // $data['categories'] = Category::all()->take(config('constant.six'));
+        // $all = count(Category::all());
+        // $data['category'] = Category::skip(config('constant.six'))->take($all - config('constant.three'))->get();
+        // view()->share($data);
     }
 
     /**
