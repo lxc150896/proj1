@@ -10,7 +10,10 @@
         <div class="col-md-12">
             <div class="clearfix"></div>
             <h3>{{ trans('frontend.cart') }}</h3>
+            @if (Auth::guard('loyal_customer')->check())
+            @else
             <span class="khuyen">{{ trans('frontend.promotion') }}</span>
+            @endif
             @if(Cart::getTotalQuantity() >=  config('constant.one'))
             <table id="table_cart" class="table table-bordered .table-responsive text-center">
                 <tr class="active">
@@ -51,7 +54,7 @@
                             <td>{{ trans('frontend.totalPayment') }}</td>
                             <td><span class="total-price">{{ number_format($total, config('constant.zero'), ',', '.') }} {{ trans('frontend.price') }}</span></td>
                         </tr>
-                        @if (isset($check))
+                        @if (isset($checkPoint))
                         <tr>
                             <td>{{ trans('frontend.apply') }}
                                 {!! Form::select('discount', array(

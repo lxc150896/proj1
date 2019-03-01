@@ -125,4 +125,8 @@ return [
     'discount' => 'Khuyến mãi',
     'afterPromotion' => 'giá sau khuyến mãi',
     'k' => 'k',
+    'noAccount' => 'Bạn chưa đăng nhập!',
+    'noteOrder' => 'Bạn chưa mua sản phẩm nào!',
+    'receive' => 'Nhận hàng trong 48 giờ',
+    'accessories' => 'Phụ Kiện',
 ];

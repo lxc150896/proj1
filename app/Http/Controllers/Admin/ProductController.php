@@ -100,7 +100,6 @@ class ProductController extends Controller
         if ($request->hasFile('img')) {
             $img = $request->img->getClientOriginalName();
             $arr['img'] = $img;
-            dd($img);
             $request->img->move(config('constant.avatar'), $img);
         }
         $product::where('id', $id)->update($arr);

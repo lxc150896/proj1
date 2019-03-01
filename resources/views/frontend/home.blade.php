@@ -13,7 +13,7 @@
             @foreach($featured as $item)
             <div class=" hoverimg col-xs-6 col-xs-offset-3 col-sm-offset-0 col-md-offset-0 col-sm-6 col-md-3 text-center post">
                 <a href="{{ asset('detail/'.$item->id.'/'.$item->slug.'.html') }}"><img src="{{ asset(config('constant.avatar') . $item->img) }}"></a>
-                <p><a href="{{ asset('detail/'.$item->id.'/'.$item->slug.'.html') }}">{{ $item->name_product }}</a></p>
+                <p><a href="{{ asset('detail/'.$item->id.'/'.$item->slug.'.html') }}" title="{{ $item->name_product }}">{{ $item->name_product }}</a></p>
                 <span>{{ number_format($item->price, 0, ',', '.') }} {{ trans('frontend.price') }}</span>
                 {{-- <p><a href="#">{{ $item->name_product }}</a></p> --}}
                 <div class=" hover col-xs-12 col-sm-12 col-md-12">
@@ -29,7 +29,7 @@
             @foreach($new_product as $item)
             <div class=" hoverimg col-xs-6 col-xs-offset-3 col-sm-offset-0 col-md-offset-0 col-sm-6 col-md-3 text-center post">
                 <a href="{{ asset('detail/'.$item->id.'/'.$item->slug.'.html') }}"><img src="{{ asset(config('constant.avatar') . $item->img) }}"></a>
-                <p><a href="{{ asset('detail/'.$item->id.'/'.$item->slug.'.html') }}">{{ $item->name_product }}</a></p>
+                <p><a href="{{ asset('detail/'.$item->id.'/'.$item->slug.'.html') }}" title="{{ $item->name_product }}">{{ $item->name_product }}</a></p>
                 <span>{{ number_format($item->price, 0, ',', '.') }} {{ trans('frontend.price') }}</span>
                 {{-- <p><a href="#">{{ $item->name_product }}</a></p> --}}
                 <div class=" hover col-xs-12 col-sm-12 col-md-12">
@@ -37,6 +37,9 @@
             </div>
             @endforeach()
         </div>
+    </div>
+    <div class="text-center">
+        {{ $new_product->links() }}
     </div>
 </div>
 @stop

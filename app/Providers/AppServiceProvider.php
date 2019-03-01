@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use App\Models\Category;
+use URL;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -15,12 +16,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        
+        URL::forceScheme('https');
         Schema::defaultStringLength(191);
-        // $data['categories'] = Category::all()->take(config('constant.six'));
-        // $all = count(Category::all());
-        // $data['category'] = Category::skip(config('constant.six'))->take($all - config('constant.three'))->get();
-        // view()->share($data);
+        $data['categories'] = Category::all()->take(config('constant.six'));
+        $all = count(Category::all());
+        $data['category'] = Category::skip(config('constant.six'))->take($all - config('constant.three'))->get();
+        view()->share($data);
     }
 
     /**
@@ -47,7 +48,10 @@ class AppServiceProvider extends ServiceProvider
         \App\Repositories\Post\PostStatusRepository::class,
 
         \App\Repositories\Post\PostProductInterface::class,
-        \App\Repositories\Post\PostProductRepository::class
+        \App\Repositories\Post\PostProductRepository::class,
+
+        \App\Repositories\Post\DeviceInterface::class,
+        \App\Repositories\Post\DeviceRepository::class
     );
     }
 }

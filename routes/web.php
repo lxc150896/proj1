@@ -17,6 +17,7 @@ Route::post('detail/{id}/{slug}.html', 'FrontendController@postComment');
 Route::get('category/{id}/{slug}.html', 'FrontendController@getCategory');
 Route::get('search', 'FrontendController@getSearch')->name('search');
 Route::get('search/name', 'FrontendController@getSearchAjax');
+Route::get('device', 'FrontendController@getDevice');
 Route::group(['prefix' => 'cart'], function() {
     Route::get('add/{id}', 'CartController@getAddCart');
     Route::get('show', 'CartController@getShowCart');
@@ -31,6 +32,8 @@ Route::group(['prefix' => 'user'], function() {
     Route::get('register', 'UserController@getRegister')->name('register');
     Route::post('register', 'UserController@postRegister');
     Route::get('logout', 'UserController@getLogout');
+    Route::get('order', 'UserController@getOrder');
+    Route::get('single/{id}', 'UserController@getSingle');
 });
 Route::get('complete', 'CartController@getComplete');
 Route::group(['namespace' => 'Admin'], function () {

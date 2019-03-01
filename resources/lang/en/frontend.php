@@ -122,4 +122,8 @@ return [
     'discount' => 'discount',
     'afterPromotion' => 'Price after promotion',
     'k' => 'k',
+    'noAccount' => 'You are not logged in!',
+    'noteOrder' => 'You have not bought any products yet!',
+    'receive' => 'Receive goods in 48 hours',
+    'accessories' => 'Accessories',
 ];

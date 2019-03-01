@@ -58,12 +58,14 @@ class CartController extends Controller
             $items = LoyalCustomer::ShowCart()
             ->where('loyal_customers.id', $user)
             ->value('point');
-            $data['check'] = config('constant.one');
+            $data['check'] = $items;
             $promotion = $items;
-            $data['promotionLevel'] = (integer) ($promotion / config('constant.oneHundred'));
-            if ($promotion > config('constant.fiveHundred')) {
-                $data['promotionLevel'] = config('constant.five');
-            }            
+            $promotionLevel = (integer) ($promotion / config('constant.oneHundred'));
+            if ($promotionLevel > 5) {
+                $data['checkPoint'] = config('constant.five');
+            } elseif ($promotionLevel > 0 && $promotionLevel <= 5) {
+                $data['checkPoint'] = $promotionLevel;
+            }
         }
 
         $data['total'] = Cart::getTotal();
@@ -103,9 +105,14 @@ class CartController extends Controller
             $email = $user->email;
             $id = $user->id;
             $data['info'] = $request->all();
-            $data['discount'] = ($request->discount) - config('constant.oneHundredThousand');
+            if ($request->discount == null || $request->discount == 100000) {
+                $data['discount'] = config('constant.oneHundredThousand');
+            } else {
+                $data['discount'] = ($request->discount) - config('constant.oneHundredThousand');
+            }
+            
             $data['after_discount'] = $data['total'] - $data['discount'];
-            if ($data['discount'] != config('constant.zero')) {
+            if ($data['discount'] != config('constant.oneHundredThousand')) {
                 $points = LoyalCustomer::ShowCart()
                 ->where('loyal_customers.id', $id)
                 ->first();
@@ -121,7 +128,7 @@ class CartController extends Controller
                     }
                 }
             } else {
-                $point = (integer) ($data['total'] / config('constant.oneMilion'));
+                $point = (integer) ($data['total'] / config('constant.oneHundredThousand'));
                 if ($point > config('constant.zero')) {
                     $points = LoyalCustomer::ShowCart()
                     ->where('loyal_customers.id', $id)

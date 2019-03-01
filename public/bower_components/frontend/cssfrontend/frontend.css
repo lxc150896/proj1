@@ -230,6 +230,12 @@ img{
 }
 .hoverimg p a{
     color: #000000;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: 500;
+    font-family: 'Verdana', sans-serif;
+    display: block;
+    overflow: hidden;
 }
 .navbar-collapse{
     padding-right: 0px !important;

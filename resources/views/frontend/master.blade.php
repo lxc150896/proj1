@@ -18,15 +18,17 @@
 <body>
     <!-- header -->
     <div id="header" class="row menu-area headroom header--fixed">
-        <div id="menu_data" class="col-xs-6 col-sm-6 col-md-3 text-align">
+        <div id="menu_data" class="col-xs-6 col-sm-6 col-md-4 text-align">
          <ul class="menu_data">
             <li>@if (Auth::guard('loyal_customer')->check())
                 <a href="{{ asset('user/logout') }}">{{ trans('frontend.logout') }}</a>
+                <li><a href="{{ asset('user/order')}}">{{ trans('frontend.single') }}</a></li>
                 @else
                 <a href="{{ asset('user') }}">{{ trans('frontend.login') }}</a>
+                <li><a href="#" title="{{ trans('frontend.noAccount') }}" onclick='return false'>{{ trans('frontend.single') }}</a></li>
                 @endif
             </li>
-            <li><a href="#news">{{ trans('frontend.single') }}</a></li>
+            <li><a href="{{ asset('/device') }}">{{ trans('frontend.accessories') }}</a></li>
             <li><a href="{{ asset('/') }}">{{ trans('frontend.home') }}</a></li>
         </ul>
     </div>

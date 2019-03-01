@@ -15,6 +15,7 @@ return [
     'oneHundred' => '100',
     'fiveHundred' => '500',
     'oneThousand' => '10000',
+    'thousandth' => '1000',
     'oneHundredThousand' => '100000',
     'twoHundredThousand' => '200000',
     'threeHundredThousand' => '300000',

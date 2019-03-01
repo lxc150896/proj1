@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\CustomerRequest;
+use App\Models\Customer;
 use Auth;
 use App\Repositories\Post\PostCustomerRepository;
 use App\Repositories\Post\PostEloquentRepository;
@@ -64,5 +65,19 @@ class UserController extends Controller
         $request->session()->flash('login', trans('frontend.messageLogin'), ['mau' => 'info']);
         
         return redirect('user');
+    }
+
+    public function getOrder()
+    {
+        $id = Auth::guard('loyal_customer')->id();
+        $data['orders'] = Customer::where('customers.loyal_id', $id)->get();
+        
+        return view('frontend.order', $data);
+    }
+
+    public function getSingle($id)
+    {
+        $data['orders'] = Customer::customer()->where('customers.id', $id)->get();
+        return view('frontend.single', $data);
     }
 }

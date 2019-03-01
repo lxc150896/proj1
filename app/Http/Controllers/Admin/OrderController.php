@@ -23,7 +23,7 @@ class OrderController extends Controller
     {
         $data['orders'] = Customer::customer()->where('customers.id', $id)->get();
 
-        return view('backend.detail', $data);     
+        return view('backend.detail', $data);
     }
 
     public function getStatusOrder($id)

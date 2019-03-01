@@ -7,20 +7,23 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\Comment;
 use App\Repositories\Post\PostProductRepository;
+use App\Repositories\Post\DeviceRepository;
 
 class FrontendController extends Controller
 {
     protected $postProduct;
+    protected $postDevice;
 
-    public function __construct(PostProductRepository $postProduct)
+    public function __construct(PostProductRepository $postProduct, DeviceRepository $postDevice)
     {
         $this->postProduct = $postProduct;
+        $this->postDevice = $postDevice;
     }
 
     public function getHome()
     {
-        $data['featured'] = Product::where('featured', config('constant.one'))->orderBy('id', 'desc')->paginate(1);
-        $data['new_product'] = Product::orderBy('id', 'desc')->paginate(1);
+        $data['featured'] = Product::where('featured', config('constant.one'))->orderBy('id', 'desc')->paginate(4);
+        $data['new_product'] = Product::orderBy('id', 'desc')->paginate(16);
 
         return view('frontend.home', $data);
     }
@@ -73,5 +76,11 @@ class FrontendController extends Controller
         $products = $this->postProduct->getSearchProduct($request);
 
         return response()->json($products);
+    }
+
+    public function getDevice()
+    {
+        $data['devices'] = $this->postDevice->getDevice();
+        return view('frontend.device', $data);
     }
 }
